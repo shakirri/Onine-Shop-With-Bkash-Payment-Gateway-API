@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Success</title>
+  <link rel="stylesheet" href={% static 'style.css' %}>
+</head>
+<body>
+  <header>
+    <h1>Apparel Online Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="transaction-success">
+      <h2>Transaction {{transaction}}</h2>
+      {% if status == '0000' %}
+      <div class="transaction-details">
+        <p><strong>Transaction ID:</strong> {{trnx}}</p>
+        <p><strong>Amount Paid:</strong>{{amount}}</p>
+      </div>
+      <div class="refund-option">
+        <p>If you want to request a refund, please click the button below:</p>
+        <form action="refund">
+          <button type="submit" class="btn-refund">Request Refund</button>
+        </form>
+      </div>
+      {% else %}
+      <p>{{trstat}}</p>
+      {% endif %}
+    </section>
+    <section class="hero">
+    <h2>Thank you for shopping with us!</h2>
+    <p>Check out more of our collections</p>
+    <form action="index">
+      <br> <button type="Submit" class="btn">Add to Cart</button><br>
+    </form>
+  </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Apparel Online Store. All rights reserved.</p>
+  </footer>
+</body>
+</html>

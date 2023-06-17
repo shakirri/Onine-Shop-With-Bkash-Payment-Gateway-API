@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href={% static 'stylecart.css' %}>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+</head>
+<body>
+  <header>
+    <h1>Apparel Online Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="checkout">
+      <h2>Checkout</h2>
+      <div class="cart-view">
+        <h3>Cart</h3>
+        <ul>
+          <p><strong>Product:</strong> Kit 1</p>
+          <p><strong>Amount:</strong> BDT 10</p>
+          <!-- Add your dynamic cart items here -->
+        </ul>
+      </div>
+      <form action="create">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" name="city">
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip Code</label>
+          <input type="text" id="zip" name="zip">
+        </div>
+        
+        <div class="form-group">
+          <div class="payment-options">
+            <label>Payment Method</label>
+            <div class="container">
+              <div class="paybox">
+                <input type="radio" id="credit" name="payment" value="credit" required>
+                <i class='fa fa-credit-card'></i>
+                <label for="credit">Credit Card</label>
+              </div>
+              <div class="paybox">
+                <input type="radio" id="bKash" name="payment" value="paypal" required>
+                <img src={% static  "bKash.svg"% }  class="abc">                
+                <label for="bKash">bKash</label>
+              </div>
+              <div class="paybox">
+                <input type="radio" id="cash" name="payment" value="cash" required>
+                <i class='fa fa-money'></i>
+                <label for="cash">Cash on Delivery</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn">Place Order</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Apparel Online Store. All rights reserved.</p>
+  </footer>
+</body>
+</html>
