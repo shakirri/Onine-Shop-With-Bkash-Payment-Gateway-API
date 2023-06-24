@@ -15,6 +15,8 @@ app_key="HIDDEN"
 app_secret="HIDDEN"
 bKashUsername="HIDDEN"
 bKashPassword="HIDDEN"
+baseURL="http://127.0.0.1:8000/"
+
 @login_required(login_url='login')
 def userlist(request):
   users=Users.objects.all()
@@ -139,7 +141,7 @@ def createAgreement(request):
 
     payload = {
         "mode": "0000",
-        "callbackURL": "https://p3mnzwqn.cdpad.io/agreeexe",
+        "callbackURL": baseURL+"/agreeexe",
         "amount": "2",
         "currency": "BDT",
         "intent": "sale",
@@ -183,7 +185,7 @@ def createUrl(request):
     
     payload = {
         "mode": "0011",
-        "callbackURL": "https://p3mnzwqn.cdpad.io/pay",
+        "callbackURL": baseURL+"/pay",
         "amount": "2",
         "currency": "BDT",
         "intent": "sale",
@@ -210,7 +212,7 @@ def create(request):
     payload = {
         'agreementID': agreementA,
         "mode": "0001",
-        "callbackURL": "https://p3mnzwqn.cdpad.io/pay",
+        "callbackURL": baseURL+"/pay",
         "amount": "2",
         "currency": "BDT",
         "intent": "sale",
