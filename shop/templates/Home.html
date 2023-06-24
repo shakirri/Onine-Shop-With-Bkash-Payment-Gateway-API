@@ -2,63 +2,75 @@
 {% load static %}
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Apparel Online Store</title>
-	<link rel="stylesheet" href={% static 'style.css' %}>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apparel Online Store</title>
+  <link rel="stylesheet" href={% static 'style.css' %}>
 </head>
 <body>
-	<header>
-		<h1>Apparel Online Store</h1>
-		<nav>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Shop</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+  <header>
+    <h1>Apparel Online Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{{user.username}} (Login Out)</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <div class="messages">
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+  </div>
+  <section class="hero">
+    <h2>Welcome to our store!</h2>
+    <p>We offer a wide variety of high-quality apparel at affordable prices.</p>
+    <a href="#" class="btn">Shop Now</a>
+  </section>
 
-	<section class="hero">
-		<h2>Welcome to our store!</h2>
-		<p>We offer a wide variety of high-quality apparel at affordable prices.</p>
-		<a href="#" class="btn">Shop Now</a>
-	</section>
+  <section class="featured">
+    <div class="product">
+      <img src="{% static 'download.png' %}" alt="Product 1">
+      <h3>Kit 1</h3>
+      <p>BDT 10</p>
+      <form action="cartView">
+        <br> <button type="Submit" class="btn">Add to Cart</button><br>
+      </form>
+    </div>
 
-	<section class="featured">
-		<div class="product">
-			<img src="{% static 'download.png' %}" alt="Product 1">
-			<h3>Kit 1</h3>
-			<p>BDT 10</p>
-			<form action="cartView">
-				<br> <button type="Submit" class="btn">Add to Cart</button><br>
-			</form>
-		</div>
+    <div class="product">
+      <img src="{% static  "images.jfif"%}" alt="Product 2">
+      <h3>Kit 2</h3>
+      <p>BDT 10</p>
+      <form action="cartView">
+        <br> <button type="Submit" class="btn">Add to Cart</button><br>
+      </form>
+    </div>
 
-		<div class="product">
-			<img src="{% static  "images.jfif"%}" alt="Product 2">
-			<h3>Kit 2</h3>
-			<p>BDT 10</p>
-			<form action="cartView">
-				<br> <button type="Submit" class="btn">Add to Cart</button><br>
-			</form>
-		</div>
+    <div class="product">
+      <img src="{% static  "images2.jfif"%}" alt="Product 3">
+      <h3>Kit 3</h3>
+      <p>BDT 10</p>
+      <form action="cartView">
+        <br> <button type="Submit" class="btn">Add to Cart</button><br>
+      </form>
+    </div>
 
-		<div class="product">
-			<img src="{% static  "images2.jfif"%}" alt="Product 3">
-			<h3>Kit 3</h3>
-			<p>BDT 10</p>
-			<form action="cartView">
-				<br> <button type="Submit" class="btn">Add to Cart</button><br>
-			</form>
-		</div>
+  
+  </section>
 
-	
-	</section>
-
-	<footer>
-		<p>&copy; 2023 Apparel Online Store. All rights reserved.</p>
-	</footer>
+  <footer>
+    <p>&copy; 2023 Apparel Online Store. All rights reserved.</p>
+  </footer>
 </body>
 </html>

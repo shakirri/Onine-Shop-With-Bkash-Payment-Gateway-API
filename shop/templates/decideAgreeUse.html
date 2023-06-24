@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apparel Online Store</title>
+  <link rel="stylesheet" href={% static 'style.css' %}>
+</head>
+<body>
+  <header>
+    <h1>Apparel Online Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{{user.username}} (Login Out)</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h2></h2>
+      <p>Do you want to use the following agreemented number for payment</p>
+      <p>{{phone}}</p>
+      <form action="create">
+        <br> <button type="Submit" class="btn">Yes</button><br>
+      </form>
+      <form action="createUrl">
+        <br> <button type="Submit" class="btn">No</button><br>
+      </form>
+        <form action="cancelAgree">
+          <br> <button type="Submit" class="btn">Cancel Agreement</button><br>
+        </form>
+    </section>
+  </main>
+</body>

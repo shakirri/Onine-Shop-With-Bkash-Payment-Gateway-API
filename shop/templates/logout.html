@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Success</title>
+  <link rel="stylesheet" href={% static 'style.css' %}>
+</head>
+<body>
+  <header>
+    <h1>Apparel Online Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+  </header>
+{% block content %}
+    <div class="container">
+        <h1>You have been Logged out</h1>
+        <h5><a href="{% url 'login' %}">Login In Again</a></h5>
+    </div>
+{% endblock %}

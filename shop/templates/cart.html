@@ -16,7 +16,11 @@
         <li><a href="#">Home</a></li>
         <li><a href="#">Shop</a></li>
         <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{{user.username}} (Login Out)</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login In</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
@@ -32,7 +36,7 @@
           <!-- Add your dynamic cart items here -->
         </ul>
       </div>
-      <form action="create">
+      <form action="agreementCheck">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name">
@@ -65,7 +69,7 @@
               </div>
               <div class="paybox">
                 <input type="radio" id="bKash" name="payment" value="paypal" required>
-                <img src={% static  "bKash.svg"% }  class="abc">                
+                <img src={% static  "bKash.svg"%}  class="abc">                
                 <label for="bKash">bKash</label>
               </div>
               <div class="paybox">
